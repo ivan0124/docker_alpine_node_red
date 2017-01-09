@@ -1,6 +1,6 @@
 #!/bin/bash
-DOCKER_API_GW_IMAGE=ivan0124tw/docker_alpine_java_dev
-DOCKER_API_GW_CONTAINER=docker_alpine_java_dev
+DOCKER_API_GW_IMAGE=ivan0124tw/docker_alpine_node_red
+DOCKER_API_GW_CONTAINER=node-red
 ADVANTECH_NET=advigw_network
 
 
@@ -45,11 +45,11 @@ fi
 echo "======================================="
 echo "[Step5]: Run container images......"
 echo "======================================="
-sudo docker run -it --name $DOCKER_API_GW_CONTAINER -v $PWD/src:/home/adv/docker_alpine_dev/src:rw $DOCKER_API_GW_IMAGE /bin/bash
+sudo docker run -it --name $DOCKER_API_GW_CONTAINER -p 1880:1880 $DOCKER_API_GW_IMAGE /bin/bash
 
 
 #join to user-defined network advigw_network
-#echo "======================================="
-#echo "[Step6]: Join to network advigw_network......"
-#echo "======================================="
-#sudo docker network connect $ADVANTECH_NET $DOCKER_API_GW_CONTAINER
+echo "======================================="
+echo "[Step6]: Join to network advigw_network......"
+echo "======================================="
+sudo docker network connect $ADVANTECH_NET $DOCKER_API_GW_CONTAINER
