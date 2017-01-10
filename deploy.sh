@@ -45,7 +45,11 @@ fi
 echo "======================================="
 echo "[Step5]: Run container images......"
 echo "======================================="
-sudo docker run -it --name $DOCKER_API_GW_CONTAINER -p 1880:1880 $DOCKER_API_GW_IMAGE /bin/bash
+#For release
+sudo docker run -itd --name $DOCKER_API_GW_CONTAINER -p 1880:1880 $DOCKER_API_GW_IMAGE
+
+#For develop
+#sudo docker run -it --name $DOCKER_API_GW_CONTAINER -p 1880:1880 $DOCKER_API_GW_IMAGE /bin/bash
 
 
 #join to user-defined network advigw_network
