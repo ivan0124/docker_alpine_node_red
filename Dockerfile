@@ -9,11 +9,11 @@ RUN apk update && \
     git clone --branch=node-red-contrib-hddpmq https://github.com/ADVANTECH-Corp/docker-igw-app-x86.git /home/adv/node-red-contrib-hddpmq && \
     /bin/mv /home/adv/node-red-contrib-hddpmq/node-red-contrib-hddpmq/hdd-pmq.* /usr/lib/node_modules/node-red/nodes/core/io/ && \
     /bin/rm -rf /home/adv/node-red-contrib-hddpmq
-    #apk del git && rm -rf /tmp/* /var/cache/apk/*
+    apk del git && rm -rf /tmp/* /var/cache/apk/*
     
 #Setting docker port and run node-red
 EXPOSE 1880
 
 WORKDIR /home/adv
 # Run Node-red
-#CMD ["/usr/bin/node-red"]
+CMD ["/usr/bin/node-red"]
